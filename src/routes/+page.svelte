@@ -1,24 +1,39 @@
 <script lang="ts">
-    import Todo from "$lib/Todo.svelte"
-    let incompleteTodos: string[] = [];
-    let completeTodos: string[] = []; 
+	import Todo from '$lib/Todo.svelte';
+	import Plus from 'lucide-svelte/icons/plus';
 
-    let currentTodo: string;
+	let incompleteTodos: string[] = [];
+	let completeTodos: string[] = [];
 
-    function addTodo() {
-        incompleteTodos = [currentTodo, ...incompleteTodos];
-    }
+	let currentTodo: string = "";
+
+	function addTodo() {
+		incompleteTodos = [currentTodo, ...incompleteTodos];
+	}
 </script>
 
-<div class="px-3 py-2 flex flex-col gap-4">
-    <h1 class="text-3xl font-semibold">To-Dos</h1>
+<div class="flex flex-col gap-4 p-5">
+	<h1 class="text-3xl font-semibold text-white">To-Dos</h1>
 
-    <div class="p-2 flex gap-2 bg-gray-400 rounded-md">
-        <input type="text" name="Todo" class="bg-slate-500 p-2 rounded-md shadow-sm" bind:value={currentTodo}>
-        <button on:click={addTodo} disabled={currentTodo === ""} class="bg-slate-500 p-2 rounded-md shadow-sm">Add</button>
-    </div>
+	<div class="flex gap-2 rounded-md bg-gray-600 p-2">
+		<input
+			type="text"
+			name="Todo"
+            placeholder="Try 'Bake a cake'"
+			class="rounded-md bg-gray-700 text-white p-2 shadow-sm"
+			bind:value={currentTodo}
+		/>
+		<button
+			on:click={addTodo}
+			disabled={currentTodo === ''}
+			class="flex gap-1 rounded-md bg-sky-400 p-2 font-semibold shadow-sm transition disabled:bg-slate-500"
+		>
+			<Plus />
+			<p>Add</p>
+		</button>
+	</div>
 
-    {#each incompleteTodos as todo}
-        <Todo {todo}/>
-    {/each}
+	{#each incompleteTodos as todo}
+		<Todo {todo} />
+	{/each}
 </div>

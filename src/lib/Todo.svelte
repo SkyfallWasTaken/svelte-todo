@@ -1,8 +1,8 @@
 <script lang="ts">
-    export let todo: string;
+	export let todo: string;
 </script>
 
-<div class="p-2 bg-slate-800 text-white flex gap-2">
-    <input type="checkbox"/>
-    <span>{todo}</span>
+<div class="flex gap-2 bg-gray-600 p-2 rounded-md shadow-sm text-white">
+	<input type="checkbox" class="bg-gray-400" />
+	<span>{todo}</span>
 </div>
