@@ -5,7 +5,7 @@
 	let incompleteTodos: string[] = [];
 	let completeTodos: string[] = [];
 
-	let currentTodo: string = "";
+	let currentTodo: string = '';
 
 	function addTodo() {
 		incompleteTodos = [currentTodo, ...incompleteTodos];
@@ -19,8 +19,8 @@
 		<input
 			type="text"
 			name="Todo"
-            placeholder="Try 'Bake a cake'"
-			class="rounded-md bg-gray-700 text-white p-2 shadow-sm"
+			placeholder="Try 'Bake a cake'"
+			class="rounded-md bg-gray-700 p-2 text-white shadow-sm"
 			bind:value={currentTodo}
 		/>
 		<button
@@ -33,7 +33,13 @@
 		</button>
 	</div>
 
-	{#each incompleteTodos as todo}
-		<Todo {todo} />
-	{/each}
+	<hr class="my-2">
+
+	{#if (incompleteTodos || completeTodos)}
+		{#each incompleteTodos as todo}
+			<Todo {todo} />
+		{/each}
+	{:else}
+        <p class="text-xl font-semibold">No todos</p>
+    {/if}
 </div>
