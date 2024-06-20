@@ -2,6 +2,8 @@
 	import '../app.css';
 </script>
 
-<slot></slot>
+<main class="bg-slate-600">
+	<slot></slot>
+</main>
 
 <style></style>
